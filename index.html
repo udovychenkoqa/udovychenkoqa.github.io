@@ -9,51 +9,58 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+  /* dark-first: bare :root holds the dark palette (the default) */
   :root {
-    --bg: #F1F4F1;
-    --surface: #FFFFFF;
-    --surface-2: #E7ECE7;
-    --ink: #10151A;
-    --ink-soft: #4B565C;
-    --ink-faint: #7C8983;
-    --border: #D7DED7;
-    --accent: #17765F;
-    --accent-ink: #FFFFFF;
-    --warn: #A66A16;
-    --tag-bg: #E4EFE9;
-    --shadow: 0 1px 0 rgba(16,21,26,0.04);
+    --bg: #10161C;
+    --surface: #161F27;
+    --surface-2: #1C2731;
+    --ink: #EAF0F4;
+    --ink-soft: #9FB0BC;
+    --ink-faint: #66767F;
+    --border: #26333D;
+    --accent: #E8A33D;
+    --accent-ink: #17110A;
+    --pass: #35CB9A;
+    --pass-ink: #06170F;
+    --tag-bg: #1C2731;
+    --shadow: none;
+    --nav-bg: rgba(16, 22, 28, 0.82);
   }
 
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #0C1310;
-      --surface: #121B17;
-      --surface-2: #19241F;
-      --ink: #E9F1EC;
-      --ink-soft: #9FB2A9;
-      --ink-faint: #6C8079;
-      --border: #253630;
-      --accent: #33C596;
-      --accent-ink: #06170F;
-      --warn: #E3A94C;
-      --tag-bg: #15221C;
-      --shadow: none;
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #F3F5F4;
+      --surface: #FFFFFF;
+      --surface-2: #E8ECE9;
+      --ink: #10161C;
+      --ink-soft: #4B565C;
+      --ink-faint: #7C8983;
+      --border: #D7DEDA;
+      --accent: #B5761F;
+      --accent-ink: #FFFFFF;
+      --pass: #17765F;
+      --pass-ink: #FFFFFF;
+      --tag-bg: #E4EFE9;
+      --shadow: 0 1px 0 rgba(16,21,26,0.05);
+      --nav-bg: rgba(243, 245, 244, 0.82);
     }
   }
 
-  :root[data-theme="dark"] {
-    --bg: #0C1310;
-    --surface: #121B17;
-    --surface-2: #19241F;
-    --ink: #E9F1EC;
-    --ink-soft: #9FB2A9;
-    --ink-faint: #6C8079;
-    --border: #253630;
-    --accent: #33C596;
-    --accent-ink: #06170F;
-    --warn: #E3A94C;
-    --tag-bg: #15221C;
-    --shadow: none;
+  :root[data-theme="light"] {
+    --bg: #F3F5F4;
+    --surface: #FFFFFF;
+    --surface-2: #E8ECE9;
+    --ink: #10161C;
+    --ink-soft: #4B565C;
+    --ink-faint: #7C8983;
+    --border: #D7DEDA;
+    --accent: #B5761F;
+    --accent-ink: #FFFFFF;
+    --pass: #17765F;
+    --pass-ink: #FFFFFF;
+    --tag-bg: #E4EFE9;
+    --shadow: 0 1px 0 rgba(16,21,26,0.05);
+    --nav-bg: rgba(243, 245, 244, 0.82);
   }
 
   * { box-sizing: border-box; }
@@ -63,13 +70,13 @@
     color: var(--ink);
     font-family: "Source Sans 3", ui-sans-serif, system-ui, -apple-system, sans-serif;
     line-height: 1.55;
-    padding-inline: 20px;
   }
 
   .wrap {
-    max-width: 840px;
+    max-width: 860px;
     margin: 0 auto;
-    padding-block: 28px 64px;
+    padding-inline: 20px;
+    padding-block: 0 64px;
   }
 
   a { color: var(--accent); }
@@ -84,51 +91,90 @@
     font-family: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
   }
 
-  /* ---- top status strip ---- */
-  .statusbar {
+  /* ---- nav ---- */
+  .topnav {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--nav-bg);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .topnav-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 14px 20px;
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 12.5px;
-    color: var(--ink-faint);
-    padding-block: 10px;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 40px;
-    flex-wrap: wrap;
+    gap: 18px;
   }
-  .dot {
+  .brand {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+  }
+  .brand .dot {
     width: 7px; height: 7px; border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
+    background: var(--pass);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--pass) 18%, transparent);
     flex: none;
   }
-  .statusbar .sep { opacity: .5; }
+  .navlinks {
+    display: flex;
+    gap: 4px;
+    margin-left: auto;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .navlinks::-webkit-scrollbar { display: none; }
+  .navlinks a {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12.5px;
+    color: var(--ink-faint);
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+    transition: color .15s ease, background .15s ease;
+  }
+  .navlinks a:hover { color: var(--ink); background: var(--surface-2); }
 
   /* ---- hero ---- */
-  .hero { display: flex; flex-direction: column; gap: 18px; margin-bottom: 56px; }
+  .hero { display: flex; flex-direction: column; gap: 20px; padding-top: 44px; margin-bottom: 56px; }
   .eyebrow {
     font-size: 12.5px;
     letter-spacing: .04em;
-    color: var(--accent);
+    color: var(--pass);
     display: flex;
     align-items: baseline;
     gap: 8px;
   }
   .eyebrow::before { content: "$"; color: var(--ink-faint); }
 
-  h1.name {
-    font-size: clamp(2.3rem, 6vw, 3.4rem);
+  h1.thesis {
+    font-size: clamp(2rem, 5.4vw, 3rem);
     font-weight: 800;
     letter-spacing: -0.01em;
-    line-height: 1.04;
+    line-height: 1.08;
+    max-width: 16ch;
   }
+  h1.thesis .accent-word { color: var(--accent); }
 
-  .role-line {
-    font-size: clamp(1.05rem, 2.4vw, 1.25rem);
-    color: var(--ink-soft);
-    font-weight: 500;
+  .subline {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px 10px;
+    font-size: clamp(1rem, 2.2vw, 1.15rem);
   }
-  .role-line .accent-ink { color: var(--ink); font-weight: 700; }
+  .subline .who { font-weight: 700; }
+  .subline .role { color: var(--ink-soft); }
 
   .pitch {
     max-width: 62ch;
@@ -154,7 +200,7 @@
     color: var(--ink);
     text-decoration: none;
     box-shadow: var(--shadow);
-    transition: border-color .15s ease, transform .1s ease;
+    transition: border-color .15s ease;
   }
   .chip:hover { border-color: var(--accent); }
   .chip svg { width: 14px; height: 14px; stroke: currentColor; fill: none; flex: none; }
@@ -191,7 +237,7 @@
   }
 
   /* ---- sections ---- */
-  section { margin-bottom: 52px; }
+  section { margin-bottom: 52px; scroll-margin-top: 70px; }
   .sec-head {
     display: flex;
     align-items: center;
@@ -240,7 +286,7 @@
   .skill-card .cat {
     font-family: "IBM Plex Mono", monospace;
     font-size: 11.5px;
-    color: var(--accent);
+    color: var(--pass);
     letter-spacing: .04em;
     margin-bottom: 10px;
   }
@@ -280,9 +326,9 @@
     border: 2px solid var(--ink-faint);
   }
   .job.current .node {
-    border-color: var(--accent);
-    background: var(--accent);
-    box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 20%, transparent);
+    border-color: var(--pass);
+    background: var(--pass);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--pass) 20%, transparent);
   }
   .job-head {
     display: flex;
@@ -310,9 +356,9 @@
     color: var(--ink-faint);
   }
   .job.current .status-chip {
-    color: var(--accent);
-    border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
-    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    color: var(--pass);
+    border-color: color-mix(in srgb, var(--pass) 45%, var(--border));
+    background: color-mix(in srgb, var(--pass) 12%, transparent);
   }
   .log { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; gap: 5px; }
   .log li {
@@ -396,19 +442,26 @@
     border: 1px solid var(--border);
   }
 
-  /* ---- footer / contact cta ---- */
+  /* ---- footer cta ---- */
   .cta {
-    text-align: left;
     border-top: 1px solid var(--border);
-    padding-top: 28px;
+    padding-top: 36px;
+    background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--accent) 5%, transparent));
+    margin-inline: -20px;
+    padding-inline: 20px;
+    border-radius: 0;
   }
-  .cta h2 { font-size: 1.5rem; margin-bottom: 8px; }
-  .cta p { color: var(--ink-soft); max-width: 56ch; margin-bottom: 18px; }
+  .cta h2 { font-size: clamp(1.6rem, 4vw, 2.1rem); margin-bottom: 10px; max-width: 20ch; }
+  .cta p { color: var(--ink-soft); max-width: 56ch; margin-bottom: 20px; }
   .foot-note {
     margin-top: 32px;
     font-family: "IBM Plex Mono", monospace;
     font-size: 11px;
     color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
   }
 
   @media (prefers-reduced-motion: no-preference) {
@@ -418,22 +471,29 @@
 </style>
 </head>
 <body>
-<div class="wrap">
-
-  <div class="statusbar mono">
-    <span class="dot"></span>
-    <span>udovychenko / portfolio</span>
-    <span class="sep">·</span>
-    <span>role: automation-qa-engineer</span>
-    <span class="sep">·</span>
-    <span>base: Kyiv, UA</span>
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a class="brand" href="#top"><span class="dot"></span>anton.udovychenko</a>
+    <div class="navlinks mono">
+      <a href="#summary">about</a>
+      <a href="#skills">skills</a>
+      <a href="#experience">experience</a>
+      <a href="#education">education</a>
+      <a href="#contact">contact</a>
+    </div>
   </div>
+</nav>
+
+<div class="wrap" id="top">
 
   <header class="hero">
     <div class="eyebrow mono">whoami</div>
-    <h1 class="name">Anton Udovychenko</h1>
-    <p class="role-line"><span class="accent-ink">Automation QA Engineer</span> — E2E &amp; API test automation for web &amp; mobile</p>
-    <p class="pitch">4+ years turning fragile manual regression cycles into stable, observable test automation — Playwright &amp; TypeScript suites, CI/CD pipelines, and the dashboards that tell a team when something actually broke.</p>
+    <h1 class="thesis">I turn manual regression into automation nobody has to <span class="accent-word">babysit</span>.</h1>
+    <p class="subline">
+      <span class="who">Anton Udovychenko</span>
+      <span class="role">— Automation QA Engineer, Kyiv, UA</span>
+    </p>
+    <p class="pitch">4+ years building E2E &amp; API test frameworks from scratch — Playwright, TypeScript, and the CI/CD pipelines and dashboards that tell a team when something actually broke, instead of who forgot to run the tests.</p>
 
     <div class="contact-row">
       <a class="chip" href="mailto:a.udovychenko1203@gmail.com">
@@ -472,7 +532,11 @@
         <div class="label">TEAMS SHIPPED WITH</div>
       </div>
       <div class="stat">
-        <div class="num mono" style="font-size:1.25rem;">TS · PW · SQL</div>
+        <div class="num">3</div>
+        <div class="label">PROMOTIONS AT ONE COMPANY</div>
+      </div>
+      <div class="stat">
+        <div class="num mono" style="font-size:1.15rem;">TS · PW · SQL</div>
         <div class="label">CORE STACK</div>
       </div>
     </div>
@@ -661,12 +725,16 @@
   </section>
 
   <section class="cta" id="contact">
-    <h2>Let's talk</h2>
-    <p>Open to Automation QA / SDET roles — happy to walk through a framework I've built or a regression cycle I've cut from hours to minutes.</p>
+    <h2>Want to talk about a role?</h2>
+    <p>Open to Automation QA / SDET positions — happy to walk through a framework I've built from scratch or a regression cycle I've cut from hours to minutes.</p>
     <div class="contact-row">
       <a class="chip" href="mailto:a.udovychenko1203@gmail.com">
         <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/></svg>
         Email
+      </a>
+      <a class="chip" href="tel:+380993484583">
+        <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M6 3h3l2 5-2.5 1.5a11 11 0 0 0 5 5L15 12l5 2v3a2 2 0 0 1-2 2C10.5 19 5 13.5 5 6a2 2 0 0 1 1-2z"/></svg>
+        Call
       </a>
       <a class="chip" href="https://linkedin.com/in/qa-anton-udovychenko" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4.5a2 2 0 0 1 4 0V17"/></svg>
@@ -681,7 +749,10 @@
         Telegram
       </a>
     </div>
-    <div class="foot-note">© 2026 Anton Udovychenko — built with Playwright energy, deployed on GitHub Pages.</div>
+    <div class="foot-note">
+      <span>© 2026 Anton Udovychenko · Kyiv, Ukraine</span>
+      <span>udovychenkoqa.github.io</span>
+    </div>
   </section>
 
 </div>
