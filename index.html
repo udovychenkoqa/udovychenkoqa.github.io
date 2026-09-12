@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Automation QA engineer portfolio for Anton Udovychenko — experience, skills matrix and contact details.">
+<title>Anton Udovychenko</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F1F4F1;
+    --surface: #FFFFFF;
+    --surface-2: #E7ECE7;
+    --ink: #10151A;
+    --ink-soft: #4B565C;
+    --ink-faint: #7C8983;
+    --border: #D7DED7;
+    --accent: #17765F;
+    --accent-ink: #FFFFFF;
+    --warn: #A66A16;
+    --tag-bg: #E4EFE9;
+    --shadow: 0 1px 0 rgba(16,21,26,0.04);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0C1310;
+      --surface: #121B17;
+      --surface-2: #19241F;
+      --ink: #E9F1EC;
+      --ink-soft: #9FB2A9;
+      --ink-faint: #6C8079;
+      --border: #253630;
+      --accent: #33C596;
+      --accent-ink: #06170F;
+      --warn: #E3A94C;
+      --tag-bg: #15221C;
+      --shadow: none;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #0C1310;
+    --surface: #121B17;
+    --surface-2: #19241F;
+    --ink: #E9F1EC;
+    --ink-soft: #9FB2A9;
+    --ink-faint: #6C8079;
+    --border: #253630;
+    --accent: #33C596;
+    --accent-ink: #06170F;
+    --warn: #E3A94C;
+    --tag-bg: #15221C;
+    --shadow: none;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Source Sans 3", ui-sans-serif, system-ui, -apple-system, sans-serif;
+    line-height: 1.55;
+    padding-inline: 20px;
+  }
+
+  .wrap {
+    max-width: 840px;
+    margin: 0 auto;
+    padding-block: 28px 64px;
+  }
+
+  a { color: var(--accent); }
+
+  h1, h2, h3 {
+    font-family: "Archivo", ui-sans-serif, system-ui, sans-serif;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  .mono {
+    font-family: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+
+  /* ---- top status strip ---- */
+  .statusbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12.5px;
+    color: var(--ink-faint);
+    padding-block: 10px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+  .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
+    flex: none;
+  }
+  .statusbar .sep { opacity: .5; }
+
+  /* ---- hero ---- */
+  .hero { display: flex; flex-direction: column; gap: 18px; margin-bottom: 56px; }
+  .eyebrow {
+    font-size: 12.5px;
+    letter-spacing: .04em;
+    color: var(--accent);
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .eyebrow::before { content: "$"; color: var(--ink-faint); }
+
+  h1.name {
+    font-size: clamp(2.3rem, 6vw, 3.4rem);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    line-height: 1.04;
+  }
+
+  .role-line {
+    font-size: clamp(1.05rem, 2.4vw, 1.25rem);
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+  .role-line .accent-ink { color: var(--ink); font-weight: 700; }
+
+  .pitch {
+    max-width: 62ch;
+    color: var(--ink-soft);
+    font-size: 1.02rem;
+  }
+
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    font-size: 13px;
+    color: var(--ink);
+    text-decoration: none;
+    box-shadow: var(--shadow);
+    transition: border-color .15s ease, transform .1s ease;
+  }
+  .chip:hover { border-color: var(--accent); }
+  .chip svg { width: 14px; height: 14px; stroke: currentColor; fill: none; flex: none; }
+
+  /* ---- stat tiles ---- */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 8px;
+  }
+  .stat {
+    background: var(--surface);
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .stat .num {
+    font-family: "Archivo", sans-serif;
+    font-weight: 800;
+    font-size: 1.7rem;
+    letter-spacing: -0.01em;
+  }
+  .stat .label {
+    font-size: 11.5px;
+    color: var(--ink-faint);
+    letter-spacing: .03em;
+    font-family: "IBM Plex Mono", monospace;
+  }
+
+  /* ---- sections ---- */
+  section { margin-bottom: 52px; }
+  .sec-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .sec-head h2 {
+    font-size: 1.35rem;
+    font-weight: 700;
+  }
+  .sec-head .tag {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    color: var(--ink-faint);
+  }
+  .sec-head .rule {
+    height: 1px;
+    background: var(--border);
+    flex: 1;
+  }
+
+  .summary-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 22px;
+    box-shadow: var(--shadow);
+    font-size: 1rem;
+    color: var(--ink-soft);
+  }
+  .summary-card strong { color: var(--ink); }
+
+  /* ---- skills matrix ---- */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 12px;
+  }
+  .skill-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    box-shadow: var(--shadow);
+  }
+  .skill-card .cat {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11.5px;
+    color: var(--accent);
+    letter-spacing: .04em;
+    margin-bottom: 10px;
+  }
+  .tag-wrap { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    padding: 4px 9px;
+    background: var(--tag-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  /* ---- pipeline (experience) ---- */
+  .pipeline { position: relative; display: flex; flex-direction: column; gap: 0; }
+  .job {
+    position: relative;
+    padding-left: 28px;
+    padding-bottom: 32px;
+  }
+  .job::before {
+    content: "";
+    position: absolute;
+    left: 5px; top: 6px; bottom: -4px;
+    width: 1px;
+    background: var(--border);
+  }
+  .job:last-child::before { display: none; }
+  .job .node {
+    position: absolute;
+    left: 0; top: 4px;
+    width: 11px; height: 11px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 2px solid var(--ink-faint);
+  }
+  .job.current .node {
+    border-color: var(--accent);
+    background: var(--accent);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 20%, transparent);
+  }
+  .job-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 8px 14px;
+    margin-bottom: 4px;
+  }
+  .job-head .company { font-family: "Archivo", sans-serif; font-weight: 700; font-size: 1.08rem; }
+  .job-head .role { color: var(--ink-soft); font-size: .95rem; }
+  .job-head .when {
+    margin-left: auto;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11.5px;
+    color: var(--ink-faint);
+    white-space: nowrap;
+  }
+  .status-chip {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: .03em;
+    padding: 2px 7px;
+    border-radius: 5px;
+    border: 1px solid var(--border);
+    color: var(--ink-faint);
+  }
+  .job.current .status-chip {
+    color: var(--accent);
+    border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+  }
+  .log { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; gap: 5px; }
+  .log li {
+    font-size: .93rem;
+    color: var(--ink-soft);
+    padding-left: 16px;
+    position: relative;
+  }
+  .log li::before {
+    content: "\203A";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-family: "IBM Plex Mono", monospace;
+  }
+
+  /* nested stage timeline (Swisscows promotions) */
+  .stage-wrap {
+    margin-top: 14px;
+    padding: 14px 16px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .stage-label {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    color: var(--ink-faint);
+    letter-spacing: .04em;
+  }
+  .stage {
+    padding-bottom: 12px;
+    border-bottom: 1px dashed var(--border);
+  }
+  .stage:last-child { border-bottom: none; padding-bottom: 0; }
+  .stage-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px 12px;
+  }
+  .stage-head .n {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    color: var(--accent);
+  }
+  .stage-head .role { font-weight: 600; font-size: .95rem; }
+  .stage-head .when { margin-left: auto; font-family: "IBM Plex Mono", monospace; font-size: 11px; color: var(--ink-faint); }
+  .stage p { margin: 6px 0 0; font-size: .88rem; color: var(--ink-soft); }
+
+  /* ---- education / languages ---- */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 12px;
+  }
+  @media (max-width: 620px) { .two-col { grid-template-columns: 1fr; } }
+  .info-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    box-shadow: var(--shadow);
+  }
+  .edu-item { margin-bottom: 12px; }
+  .edu-item:last-child { margin-bottom: 0; }
+  .edu-item .t { font-weight: 700; font-size: .95rem; }
+  .edu-item .d { font-size: .87rem; color: var(--ink-soft); }
+  .edu-item .y { font-family: "IBM Plex Mono", monospace; font-size: 11px; color: var(--ink-faint); }
+
+  .lang-row { display: flex; align-items: center; justify-content: space-between; }
+  .lang-row .lvl {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    padding: 3px 9px;
+    border-radius: 6px;
+    background: var(--tag-bg);
+    border: 1px solid var(--border);
+  }
+
+  /* ---- footer / contact cta ---- */
+  .cta {
+    text-align: left;
+    border-top: 1px solid var(--border);
+    padding-top: 28px;
+  }
+  .cta h2 { font-size: 1.5rem; margin-bottom: 8px; }
+  .cta p { color: var(--ink-soft); max-width: 56ch; margin-bottom: 18px; }
+  .foot-note {
+    margin-top: 32px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    color: var(--ink-faint);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .job, .skill-card, .stat { animation: rise .5s ease both; }
+  }
+  @keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="statusbar mono">
+    <span class="dot"></span>
+    <span>udovychenko / portfolio</span>
+    <span class="sep">·</span>
+    <span>role: automation-qa-engineer</span>
+    <span class="sep">·</span>
+    <span>base: Kyiv, UA</span>
+  </div>
+
+  <header class="hero">
+    <div class="eyebrow mono">whoami</div>
+    <h1 class="name">Anton Udovychenko</h1>
+    <p class="role-line"><span class="accent-ink">Automation QA Engineer</span> — E2E &amp; API test automation for web &amp; mobile</p>
+    <p class="pitch">4+ years turning fragile manual regression cycles into stable, observable test automation — Playwright &amp; TypeScript suites, CI/CD pipelines, and the dashboards that tell a team when something actually broke.</p>
+
+    <div class="contact-row">
+      <a class="chip" href="mailto:a.udovychenko1203@gmail.com">
+        <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/></svg>
+        a.udovychenko1203@gmail.com
+      </a>
+      <a class="chip" href="tel:+380993484583">
+        <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M6 3h3l2 5-2.5 1.5a11 11 0 0 0 5 5L15 12l5 2v3a2 2 0 0 1-2 2C10.5 19 5 13.5 5 6a2 2 0 0 1 1-2z"/></svg>
+        +380 99 348 4583
+      </a>
+      <a class="chip" href="https://linkedin.com/in/qa-anton-udovychenko" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4.5a2 2 0 0 1 4 0V17"/></svg>
+        LinkedIn
+      </a>
+      <a class="chip" href="https://github.com/udovychenkoqa" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M9 19c-4 1.5-4-2-6-2m12 4v-3.2c0-.9.3-1.5.7-1.8-2.6-.3-5.2-1.3-5.2-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.6 5.4-5.2 5.7.4.4.8 1.1.8 2.2V19"/></svg>
+        GitHub
+      </a>
+      <a class="chip" href="https://t.me/udovychenkoqa" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M21 4L3 11l6 2m12-9l-4 17-8-6m12-11L9 13"/></svg>
+        Telegram
+      </a>
+      <span class="chip">
+        <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.4"/></svg>
+        Kyiv, UA
+      </span>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="num">4+</div>
+        <div class="label">YEARS IN TEST AUTOMATION</div>
+      </div>
+      <div class="stat">
+        <div class="num">4</div>
+        <div class="label">TEAMS SHIPPED WITH</div>
+      </div>
+      <div class="stat">
+        <div class="num mono" style="font-size:1.25rem;">TS · PW · SQL</div>
+        <div class="label">CORE STACK</div>
+      </div>
+    </div>
+  </header>
+
+  <section id="summary">
+    <div class="sec-head">
+      <h2>Summary</h2>
+      <span class="tag mono">--about</span>
+      <span class="rule"></span>
+    </div>
+    <div class="summary-card">
+      Automation QA Engineer with <strong>4+ years</strong> of total testing experience, specializing in <strong>E2E &amp; API test automation</strong> for web and mobile applications. Strong hands-on expertise in <strong>TypeScript/JavaScript, Playwright, and SQL (MySQL)</strong>. Proven track record of building automated test frameworks from scratch, setting up end-to-end CI/CD pipelines, and containerizing environments with Docker. Experienced in applying OOP and SOLID principles, Git, and test design techniques to ensure high software quality.
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="sec-head">
+      <h2>Skills matrix</h2>
+      <span class="tag mono">--stack</span>
+      <span class="rule"></span>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="cat">LANGUAGES &amp; AUTOMATION</div>
+        <div class="tag-wrap">
+          <span class="tag">TypeScript</span><span class="tag">JavaScript</span><span class="tag">Node.js</span><span class="tag">Playwright</span><span class="tag">Jest</span><span class="tag">REST API Testing</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="cat">CI/CD</div>
+        <div class="tag-wrap">
+          <span class="tag">Docker</span><span class="tag">GitLab CI/CD</span><span class="tag">GitHub Actions</span><span class="tag">Drone CI</span><span class="tag">Git / Git Flow</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="cat">DATABASES &amp; PROTOCOLS</div>
+        <div class="tag-wrap">
+          <span class="tag">MySQL</span><span class="tag">Advanced SQL</span><span class="tag">WebSockets</span><span class="tag">MongoDB</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="cat">TOOLS &amp; TESTING</div>
+        <div class="tag-wrap">
+          <span class="tag">Postman</span><span class="tag">Swagger</span><span class="tag">Charles Proxy</span><span class="tag">Grafana</span><span class="tag">BrowserStack</span><span class="tag">Jira</span><span class="tag">Azure DevOps</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="cat">ARCHITECTURE &amp; PRINCIPLES</div>
+        <div class="tag-wrap">
+          <span class="tag">OOP</span><span class="tag">SOLID</span><span class="tag">Test Design Techniques</span><span class="tag">Page Object Model</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="sec-head">
+      <h2>Experience</h2>
+      <span class="tag mono">--pipeline</span>
+      <span class="rule"></span>
+    </div>
+
+    <div class="pipeline">
+
+      <div class="job current">
+        <span class="node"></span>
+        <div class="job-head">
+          <span class="company">SKELAR</span>
+          <span class="role">Automation QA Engineer</span>
+          <span class="status-chip mono">RUNNING</span>
+          <span class="when mono">Apr 2026 — Present</span>
+        </div>
+        <ul class="log">
+          <li>Built a full test automation cycle from scratch: E2E and API suites (Playwright, TypeScript), CI execution, report storage, dashboards and results analytics.</li>
+          <li>Designed and executed complex SQL queries (MySQL) for test data preparation, state setup, and database-level validation.</li>
+          <li>Set up alerting for failed runs, cutting reaction time to regressions.</li>
+          <li>Built LangChain-based AI agents integrated into testing: content/data validation and automated analysis of test run reports.</li>
+          <li>Independently configured CI/CD pipelines (Drone CI, Bitbucket) and integrated automated suites into Git Flow.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <span class="node"></span>
+        <div class="job-head">
+          <span class="company">Avidi Technologies</span>
+          <span class="role">Automation QA Engineer</span>
+          <span class="status-chip mono">COMPLETE</span>
+          <span class="when mono">Jan 2026 — Apr 2026</span>
+        </div>
+        <ul class="log">
+          <li>Developed, scaled and refactored automated E2E and API suites using Playwright, TypeScript and Page Object Model.</li>
+          <li>Applied OOP and SOLID principles to cut code duplication and eliminate test flakiness.</li>
+          <li>Investigated test failures, debugged issues, and managed defect lifecycles.</li>
+          <li>Configured CI pipelines with GitLab and managed defect reporting.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <span class="node"></span>
+        <div class="job-head">
+          <span class="company">Treeum</span>
+          <span class="role">General QA Engineer</span>
+          <span class="status-chip mono">COMPLETE</span>
+          <span class="when mono">Feb 2025 — Jan 2026</span>
+        </div>
+        <ul class="log">
+          <li>Executed combined manual and automated testing for web platforms, including WebSockets traffic analysis and API endpoints.</li>
+          <li>Developed and maintained E2E Playwright (TypeScript) scripts, integrated into GitLab CI/CD pipelines.</li>
+          <li>Validated backend responses via Postman and Grafana log inspection.</li>
+          <li>Wrote test cases, checklists and test strategy documentation using test design techniques.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <span class="node"></span>
+        <div class="job-head">
+          <span class="company">Swisscows AG</span>
+          <span class="role">QA Engineer → QA Automation Engineer</span>
+          <span class="status-chip mono">COMPLETE</span>
+          <span class="when mono">Apr 2022 — Feb 2025</span>
+        </div>
+        <p style="font-size:.9rem;color:var(--ink-soft);margin:2px 0 0;">Three promotions over 2 years 10 months — from manual QA to owning automation.</p>
+
+        <div class="stage-wrap">
+          <div class="stage-label">PROMOTION LOG</div>
+
+          <div class="stage">
+            <div class="stage-head">
+              <span class="n mono">STAGE 03</span>
+              <span class="role">QA Automation Engineer</span>
+              <span class="when">Jan 2024 — Feb 2025 · 1 yr 2 mo</span>
+            </div>
+            <p>Automated core web user journeys and REST API services with Playwright, JS/TS and GitHub Actions; refactored legacy test code for speed and stability; applied OOP/SOLID to cut duplication and flakiness.</p>
+          </div>
+
+          <div class="stage">
+            <div class="stage-head">
+              <span class="n mono">STAGE 02</span>
+              <span class="role">General QA Engineer</span>
+              <span class="when">Mar 2023 — Jan 2024 · 11 mo</span>
+            </div>
+            <p>Tested web and mobile products (iOS/Android); inspected API &amp; WebSockets traffic via Charles Proxy and Swagger; maintained test cases in Jira and Azure DevOps.</p>
+          </div>
+
+          <div class="stage">
+            <div class="stage-head">
+              <span class="n mono">STAGE 01</span>
+              <span class="role">QA Engineer</span>
+              <span class="when">Apr 2022 — Mar 2023 · 1 yr</span>
+            </div>
+            <p>Ran functional, regression and UI testing across Web, iOS and Android using Xcode and Android Studio; used MongoDB for environment setup and data verification.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="sec-head">
+      <h2>Education &amp; languages</h2>
+      <span class="tag mono">--credentials</span>
+      <span class="rule"></span>
+    </div>
+    <div class="two-col">
+      <div class="info-card">
+        <div class="edu-item">
+          <div class="t">Automation DOJO</div>
+          <div class="d">QA Automation — JS/TS + Playwright</div>
+          <div class="y mono">2025</div>
+        </div>
+        <div class="edu-item">
+          <div class="t">Author's QA Course — Vadim Ksendzov</div>
+          <div class="d">Manual, API and Mobile Testing, DevTools</div>
+          <div class="y mono">Jan — May 2022</div>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="lang-row">
+          <span style="font-weight:600;">English</span>
+          <span class="lvl">B1</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="contact">
+    <h2>Let's talk</h2>
+    <p>Open to Automation QA / SDET roles — happy to walk through a framework I've built or a regression cycle I've cut from hours to minutes.</p>
+    <div class="contact-row">
+      <a class="chip" href="mailto:a.udovychenko1203@gmail.com">
+        <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/></svg>
+        Email
+      </a>
+      <a class="chip" href="https://linkedin.com/in/qa-anton-udovychenko" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4.5a2 2 0 0 1 4 0V17"/></svg>
+        LinkedIn
+      </a>
+      <a class="chip" href="https://github.com/udovychenkoqa" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M9 19c-4 1.5-4-2-6-2m12 4v-3.2c0-.9.3-1.5.7-1.8-2.6-.3-5.2-1.3-5.2-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.6 5.4-5.2 5.7.4.4.8 1.1.8 2.2V19"/></svg>
+        GitHub
+      </a>
+      <a class="chip" href="https://t.me/udovychenkoqa" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M21 4L3 11l6 2m12-9l-4 17-8-6m12-11L9 13"/></svg>
+        Telegram
+      </a>
+    </div>
+    <div class="foot-note">© 2026 Anton Udovychenko — built with Playwright energy, deployed on GitHub Pages.</div>
+  </section>
+
+</div>
+</body>
+</html>
